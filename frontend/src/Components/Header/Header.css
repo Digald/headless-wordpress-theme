@@ -1,0 +1,19 @@
+.header {
+    background-color: #FFD6C0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    padding-left: 5%;
+}
+
+.header__pages {
+    padding-right: 1%;
+}
+
+
+

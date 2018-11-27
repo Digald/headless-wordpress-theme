@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./Home.css";
 
+// import components
+import Header from "../../Components/Header/Header";
+
 class Home extends Component {
-    render() {
-        return <div>Hello World</div>
-    }
+  render() {
+    return <Header />;
+  }
 }
 
 export default Home;
