@@ -13,18 +13,18 @@ class Header extends Component {
 
   /**
    * Checks if the stringified values of two arrays are equal
-   * @param {array} array1 First array  
+   * @param {array} array1 First array
    * @param {array} array2 Second array
-   * @return {boolean} 
+   * @return {boolean}
    */
   checkIfArraysEqual(array1, array2) {
     return JSON.stringify(array1) === JSON.stringify(array2);
   }
- 
+
   async componentDidMount() {
     // Remove undefined just in-case to reset localstorage
     if (localStorage.getItem === undefined) {
-      localStorage.removeItem('pages');
+      localStorage.removeItem("pages");
     }
 
     // Check if local storage has data, then add to state
@@ -59,13 +59,15 @@ class Header extends Component {
     return (
       <nav className="header">
         <div className="header__logo">Logo Here</div>
-        <div className="header__pages">
-          <ul>
-            {this.state.pages.map(page => {
-              return <li key={page.id}>{page.title.rendered}</li>;
-            })}
-          </ul>
-        </div>
+        <ul className="header__pages">
+          {this.state.pages.map(page => {
+            return (
+              <li className="header__pages__page" key={page.id}>
+                {page.title.rendered}
+              </li>
+            );
+          })}
+        </ul>
       </nav>
     );
   }
