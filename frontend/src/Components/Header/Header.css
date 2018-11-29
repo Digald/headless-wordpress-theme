@@ -11,7 +11,8 @@
 .header__logo {
   font-family: "Libre Baskerville", serif;
   padding-left: 5%;
-  width: 100px;
+  max-height: 100%;
+  width: 100%;
 }
 
 .header__pages {
