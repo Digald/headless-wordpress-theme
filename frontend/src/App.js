@@ -11,6 +11,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route extact path="/" component={Home} />
+          <Route extact path="/page/:title/:id" />
         </Switch>
       </Router>
     );

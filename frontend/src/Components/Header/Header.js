@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Header.css";
 import API from "../../utils/API";
@@ -74,24 +75,37 @@ class Header extends Component {
   } // End of componentDidMount()
 
   render() {
-    console.log(this.state);
     if (this.state.pages < 1) {
       return <div>Loading...</div>;
     }
     return (
       <nav className="header">
-        <div className="header__logo">
-          <img src={this.state.logo[0]} alt={this.state.logo[1]} />
+        <div className="header__container">
+          <div className="header__logo">
+            <img src={this.state.logo[0]} alt={this.state.logo[1]} />
+          </div>
+          <ul className="header__pages">
+            {this.state.pages.map(page => {
+              return (
+                <Link
+                  to={`/pages/${page.title.rendered
+                    .replace(" ", "-")
+                    .toLowerCase()}/${page.id}`}
+                    key={page.id}
+                >
+                  <li className="header__pages__page">
+                    {page.title.rendered}
+                  </li>
+                </Link>
+              );
+            })}
+          </ul>
+          <div className="header__pages--mobile">
+            <div />
+            <div />
+            <div />
+          </div>
         </div>
-        <ul className="header__pages">
-          {this.state.pages.map(page => {
-            return (
-              <li className="header__pages__page" key={page.id}>
-                {page.title.rendered}
-              </li>
-            );
-          })}
-        </ul>
       </nav>
     );
   }
