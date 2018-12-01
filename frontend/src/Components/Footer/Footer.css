@@ -14,12 +14,17 @@
   flex-wrap: wrap;
 }
 
+.Footer__content p {
+  padding: 0;
+  margin: 0;
+}
+
 .Footer__content a {
   margin: 0 10px;
   padding: 0 10px;
   color: black;
 }
 
-i {
+.Footer__content i {
   font-size: 30px;
 }
