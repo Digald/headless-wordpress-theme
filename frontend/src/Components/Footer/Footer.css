@@ -1,0 +1,21 @@
+.Footer {
+    height: 100%;
+    width: 100%;
+    background-color: #ffd6c0;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.Footer__content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+i {
+    font-size: 30px;
+    margin: 0 10px;
+    padding: 0 10px;
+}

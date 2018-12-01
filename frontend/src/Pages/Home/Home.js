@@ -3,15 +3,21 @@ import "./Home.css";
 
 // import components
 import Header from "../../Components/Header/Header";
-import Footer from '../../Components/Footer/Footer';
+import Footer from "../../Components/Footer/Footer";
 
 /**
- * Front-Page of the application that will be rendered 
+ * Front-Page of the application that will be rendered
  */
 
 class Home extends Component {
   render() {
-    return <Header />;
+    return (
+      <div className="Home">
+        <Header />
+        <div>Sup</div>
+        <Footer />
+      </div>
+    );
   }
 }
 
