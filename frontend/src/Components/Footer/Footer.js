@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./Footer.css";
 
+/**
+ * Bottom bar of all pages that will simply say the authors name and display social media links
+ */
+
 class Footer extends Component {
   render() {
     return (

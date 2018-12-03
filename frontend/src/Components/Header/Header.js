@@ -26,7 +26,7 @@ class Header extends Component {
 
   async componentDidMount() {
     // Remove undefined just in-case to reset localstorage
-    if (localStorage.getItem === undefined) {
+    if (localStorage.getItem('pages') === undefined && localStorage.getItem('logo') === undefined) {
       localStorage.removeItem("pages");
       localStorage.removeItem("logo");
     }

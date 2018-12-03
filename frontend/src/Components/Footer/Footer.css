@@ -2,8 +2,8 @@
   height: 100%;
   width: 100%;
   background-color: #ffd6c0;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
 }
 
 .Footer__content {

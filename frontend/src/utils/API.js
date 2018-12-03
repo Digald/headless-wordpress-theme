@@ -8,6 +8,13 @@ export default {
     );
   },
   getMainLogo: async () => {
-    return await axios.get('http://localhost/headless-wordpress-theme/wordpress/wp-json/wp/v2/logos');
+    return await axios.get(
+      "http://localhost/headless-wordpress-theme/wordpress/wp-json/wp/v2/logos"
+    );
+  },
+  getGuildBanner: async () => {
+    return await axios.get(
+      "http://localhost/headless-wordpress-theme/wordpress/wp-json/wp/v2/banner"
+    );
   }
 };
