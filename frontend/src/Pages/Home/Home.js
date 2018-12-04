@@ -11,8 +11,9 @@ import Banner from "../../Components/Banner/Banner";
  */
 
 class Home extends Component {
-
-   /**
+  state = {};
+  
+  /**
    * Checks if the stringified values of two arrays are equal
    * @param {array} array1 First array
    * @param {array} array2 Second array
@@ -25,8 +26,8 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <Header checkIfArraysEqual={this.checkIfArraysEqual}/>
-        <Banner checkIfArraysEqual={this.checkIfArraysEqual}/>
+        <Header checkIfArraysEqual={this.checkIfArraysEqual} />
+        <Banner checkIfArraysEqual={this.checkIfArraysEqual} />
         <div>Sup</div>
         <Footer />
       </div>

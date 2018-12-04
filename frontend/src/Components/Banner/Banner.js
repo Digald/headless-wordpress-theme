@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Banner.css";
 import API from "../../utils/API";
+import fetchWordpress from '../../utils/api-script';
 import axios from "axios";
 
 /**
@@ -13,7 +14,7 @@ class Banner extends Component {
   };
 
   async componentDidMount() {
-    console.log(this.props);
+    fetchWordpress();
     // Remove undefined just in-case to reset localstorage
     if (localStorage.getItem("banner") === undefined) {
       localStorage.removeItem("banner");

@@ -1,6 +1,10 @@
 .Banner {
     display: flex;
     justify-content: center;
-    height: 100%;
+    width: 100vw;
+}
+
+.Banner__img {
     width: 100%;
+    height: 60%;
 }
