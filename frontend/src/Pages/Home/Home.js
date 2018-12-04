@@ -11,11 +11,22 @@ import Banner from "../../Components/Banner/Banner";
  */
 
 class Home extends Component {
+
+   /**
+   * Checks if the stringified values of two arrays are equal
+   * @param {array} array1 First array
+   * @param {array} array2 Second array
+   * @return {boolean}
+   */
+  checkIfArraysEqual(array1, array2) {
+    return JSON.stringify(array1) === JSON.stringify(array2);
+  }
+
   render() {
     return (
       <div className="Home">
-        <Header />
-        <Banner />
+        <Header checkIfArraysEqual={this.checkIfArraysEqual}/>
+        <Banner checkIfArraysEqual={this.checkIfArraysEqual}/>
         <div>Sup</div>
         <Footer />
       </div>

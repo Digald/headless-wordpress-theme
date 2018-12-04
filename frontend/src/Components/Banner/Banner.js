@@ -12,17 +12,8 @@ class Banner extends Component {
     bannerInfo: []
   };
 
-  /**
-   * Checks if the stringified values of two arrays are equal
-   * @param {array} array1 First array
-   * @param {array} array2 Second array
-   * @return {boolean}
-   */
-  checkIfArraysEqual(array1, array2) {
-    return JSON.stringify(array1) === JSON.stringify(array2);
-  }
-
   async componentDidMount() {
+    console.log(this.props);
     // Remove undefined just in-case to reset localstorage
     if (localStorage.getItem("banner") === undefined) {
       localStorage.removeItem("banner");
@@ -39,14 +30,15 @@ class Banner extends Component {
     const bannerResults = await API.getGuildBanner();
 
     // Pull specific data out of api call
-    const bannerMediaPost = bannerResults.data[0]._links['wp:featuredmedia'][0].href;
+    const bannerMediaPost =
+      bannerResults.data[0]._links["wp:featuredmedia"][0].href;
     const bannerMediaResult = await axios.get(bannerMediaPost);
     const bannerHref = bannerMediaResult.data.source_url;
     const altText = bannerMediaResult.data.alt_text;
 
     // Compare API results to current data in localstorage
     if (
-      !this.checkIfArraysEqual(
+      !this.props.checkIfArraysEqual(
         [bannerHref, altText],
         JSON.parse(localStorage.getItem("banner"))
       )
@@ -59,7 +51,11 @@ class Banner extends Component {
   }
 
   render() {
-    return <div className="Banner" />;
+    return (
+      <div className="Banner">
+        <img className="Banner__img" src={this.state.bannerInfo[0]} alt={this.state.bannerInfo[1]} />
+      </div>
+    );
   }
 }
 

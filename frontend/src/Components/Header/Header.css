@@ -27,6 +27,11 @@
   font-size: 15px;
 }
 
+.header__pages a {
+  display: flex;
+  align-items: center;
+}
+
 .header__pages__page {
   padding: 1%;
   margin: 1%;

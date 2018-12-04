@@ -14,19 +14,12 @@ class Header extends Component {
     logo: []
   };
 
-  /**
-   * Checks if the stringified values of two arrays are equal
-   * @param {array} array1 First array
-   * @param {array} array2 Second array
-   * @return {boolean}
-   */
-  checkIfArraysEqual(array1, array2) {
-    return JSON.stringify(array1) === JSON.stringify(array2);
-  }
-
   async componentDidMount() {
     // Remove undefined just in-case to reset localstorage
-    if (localStorage.getItem('pages') === undefined && localStorage.getItem('logo') === undefined) {
+    if (
+      localStorage.getItem("pages") === undefined &&
+      localStorage.getItem("logo") === undefined
+    ) {
       localStorage.removeItem("pages");
       localStorage.removeItem("logo");
     }
@@ -45,7 +38,7 @@ class Header extends Component {
 
     // Compare API data to current data to update
     if (
-      !this.checkIfArraysEqual(
+      !this.props.checkIfArraysEqual(
         pageResults.data,
         JSON.parse(localStorage.getItem("pages"))
       )
@@ -62,7 +55,7 @@ class Header extends Component {
     const logoHref = logoImageResults.data.source_url;
     const altText = logoImageResults.data.alt_text;
     if (
-      !this.checkIfArraysEqual(
+      !this.props.checkIfArraysEqual(
         [logoHref, altText],
         JSON.parse(localStorage.getItem("logo"))
       )
@@ -85,17 +78,18 @@ class Header extends Component {
             <img src={this.state.logo[0]} alt={this.state.logo[1]} />
           </div>
           <ul className="header__pages">
+            <Link to="/">
+              <li className="header__pages__page">Home</li>
+            </Link>
             {this.state.pages.map(page => {
               return (
                 <Link
                   to={`/pages/${page.title.rendered
                     .replace(" ", "-")
                     .toLowerCase()}/${page.id}`}
-                    key={page.id}
+                  key={page.id}
                 >
-                  <li className="header__pages__page">
-                    {page.title.rendered}
-                  </li>
+                  <li className="header__pages__page">{page.title.rendered}</li>
                 </Link>
               );
             })}
