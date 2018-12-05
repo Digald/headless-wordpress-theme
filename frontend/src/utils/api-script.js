@@ -7,7 +7,6 @@ import axios from "axios";
  * @return The function just sets state and then exits. Does not return any value.
  */
 export default async function fetchWordpress(script) {
-  console.log("Function successfully exported and called");
   /**
    * Checks if the stringified values of two arrays are equal
    * @param {array} array1 First array
@@ -18,18 +17,19 @@ export default async function fetchWordpress(script) {
     return JSON.stringify(array1) === JSON.stringify(array2);
   }
 
+  // define localstorage variables
+  const getLocalData = localStorage.getItem(script);
+
   // For fetching an image
   if (script === "banner" || script === "logo") {
     // Remove undefined just in-case to reset localstorage
-    if (localStorage.getItem(script) === undefined) {
+    if (getLocalData === undefined) {
       localStorage.removeItem(script);
     }
 
     // Check if local storage has data, then add to state
-    if (localStorage.getItem(script)) {
-      this.setState({
-        apiData: [...JSON.parse(localStorage.getItem(script))]
-      });
+    if (getLocalData) {
+      console.log('Point 2');
     }
 
     // Make API call in background to compare to localstorage
@@ -44,8 +44,11 @@ export default async function fetchWordpress(script) {
     const mediaLink = results.data[0]._links["wp:featuredmedia"][0].href;
     const mediaResult = await axios.get(mediaLink);
     const href = mediaResult.data.source_url;
-    const altText = mediaResult.data.source_url;
-
+    const altText = mediaResult.data.alt_text;
+    console.log('Point 3');
     // Compare API results to current data in localstorage
-  } // end image if statement
+    if (!checkIfArraysEqual([href, altText], JSON.parse(getLocalData))) {
+      localStorage.setItem(script, JSON.stringify([href, altText]));
+    }
+  } // end if statement for fetching images
 } // end fetchWordpress()

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Home.css";
+import fetchWordpress from "../../utils/api-script";
 
 // import components
 import Header from "../../Components/Header/Header";
@@ -11,8 +12,12 @@ import Banner from "../../Components/Banner/Banner";
  */
 
 class Home extends Component {
-  state = {};
-  
+  state = {
+    bannerData: [],
+    logoData: [],
+    pagesData: []
+  };
+
   /**
    * Checks if the stringified values of two arrays are equal
    * @param {array} array1 First array
@@ -23,11 +28,21 @@ class Home extends Component {
     return JSON.stringify(array1) === JSON.stringify(array2);
   }
 
+  async componentDidMount() {
+    await fetchWordpress("banner");
+    this.setState({
+      bannerData: [...JSON.parse(localStorage.getItem("banner"))]
+    });
+  }
+
   render() {
+    if (this.state.bannerData.length < 1) {
+      return <div>Loading</div>;
+    }
     return (
       <div className="Home">
         <Header checkIfArraysEqual={this.checkIfArraysEqual} />
-        <Banner checkIfArraysEqual={this.checkIfArraysEqual} />
+        <Banner bannerInfo={this.state.bannerData} />
         <div>Sup</div>
         <Footer />
       </div>
