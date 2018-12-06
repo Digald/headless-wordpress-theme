@@ -13,7 +13,6 @@ import Banner from "../../Components/Banner/Banner";
 
 class Home extends Component {
   state = {
-    bannerData: [],
     logoData: [],
     pagesData: []
   };
@@ -29,14 +28,19 @@ class Home extends Component {
   }
 
   async componentDidMount() {
-    await fetchWordpress("banner");
+    console.log(JSON.parse(localStorage.getItem('banner')).altText);
+    if (!localStorage.getItem("banner")) {
+      await fetchWordpress(['banner']);
+    }
+    fetchWordpress(['banner']);
     this.setState({
-      bannerData: [...JSON.parse(localStorage.getItem("banner"))]
+      ...this.state,
+      bannerData: JSON.parse(localStorage.getItem("banner")),
     });
   }
 
   render() {
-    if (this.state.bannerData.length < 1) {
+    if (!this.state.bannerData) {
       return <div>Loading</div>;
     }
     return (
