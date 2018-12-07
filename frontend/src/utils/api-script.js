@@ -8,19 +8,14 @@ import axios from "axios";
  */
 export default function fetchWordpress(arrOfCalls) {
   arrOfCalls.forEach(async call => {
+    
+    // Remove undefined just in-case to reset localstorage
+    if (localStorage.getItem(call) === undefined) {
+      localStorage.removeItem(call);
+    }
+
     // Start Logic for fetching an image
     if (call === "banner" || call === "logo") {
-      // Remove undefined just in-case to reset localstorage
-      if (localStorage.getItem(call) === undefined) {
-        localStorage.removeItem(call);
-      }
-
-      // Possibly return data here in the future***
-      /* 
-    if (getLocalData) {
-      Return data here
-    } 
-    */
 
       // Make API call in background to compare to localstorage
       let results;
@@ -46,6 +41,18 @@ export default function fetchWordpress(arrOfCalls) {
 
     // Start Logic for fetching lists of information
     else if (call === "pages" || call === "posts") {
+      let results;
+      if (call === 'pages') {
+        results = await API.getPages();
+      } else if (call === "posts") {
+        console.log(results);
+      }
+
+      // Collect data into a single variable and add to local storage
+      const finalData = results.data;
+      if (JSON.stringify(finalData) !== localStorage.getItem(call)) {
+        localStorage.setItem(call, JSON.stringify(finalData));
+      }
     }
   });
 } // end fetchWordpress()

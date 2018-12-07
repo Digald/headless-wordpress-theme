@@ -10,7 +10,7 @@ class Banner extends Component {
   render() {
     return (
       <div className="Banner">
-        <img className="Banner__img" src={this.props.bannerInfo.href} alt={this.props.bannerInfo.alt_text} />
+        <img className="Banner__img" src={this.props.bannerData.href} alt={this.props.bannerData.alt_text} />
       </div>
     );
   }
