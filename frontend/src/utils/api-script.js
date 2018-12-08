@@ -3,12 +3,12 @@ import axios from "axios";
 
 /**
  * Monolithic function for running through API request and setting expected data to state instead of writing out the process on every little component that needs to make an GET request to wordpress.
- * @param {array} arrOfCalls Input which wordpress api call to make between: banner, logo, etc...
+ * @param {array} arrOfCalls Input which wordpress api call to make between: banner, logo, pages, posts, guild
  * @return ...TBD
  */
 export default function fetchWordpress(arrOfCalls) {
   arrOfCalls.forEach(async call => {
-    
+
     // Remove undefined just in-case to reset localstorage
     if (localStorage.getItem(call) === undefined) {
       localStorage.removeItem(call);
@@ -40,12 +40,14 @@ export default function fetchWordpress(arrOfCalls) {
     } // end if statement for fetching images
 
     // Start Logic for fetching lists of information
-    else if (call === "pages" || call === "posts") {
+    else if (call === "pages" || call === "posts" || call === "guild") {
       let results;
       if (call === 'pages') {
         results = await API.getPages();
       } else if (call === "posts") {
         console.log(results);
+      } else if (call === "guild") {
+        results = await API.getGuild();
       }
 
       // Collect data into a single variable and add to local storage

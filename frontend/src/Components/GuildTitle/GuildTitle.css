@@ -1,0 +1,9 @@
+.GuildTitle {
+    color: #EC368D;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    letter-spacing: 20px;
+}

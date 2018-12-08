@@ -6,6 +6,7 @@ import fetchWordpress from "../../utils/api-script";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Banner from "../../Components/Banner/Banner";
+import GuildTitle from "../../Components/GuildTitle/GuildTitle";
 
 /**
  * Front-Page of the application that will be rendered
@@ -15,20 +16,21 @@ class Home extends Component {
   state = {
     logoData: [],
     pagesData: [],
-    nameData: "",
+    guildData: [],
     postsData: []
   };
 
   async componentDidMount() {
     if (!localStorage.getItem("banner")) {
-      await fetchWordpress(["banner", "pages", "logo"]);
+      await fetchWordpress(["banner", "pages", "logo", "guild"]);
     }
-    fetchWordpress(["banner", "pages", "logo"]);
+    fetchWordpress(["banner", "pages", "logo", "guild"]);
     this.setState({
       ...this.state,
       bannerData: JSON.parse(localStorage.getItem("banner")),
       pagesData: JSON.parse(localStorage.getItem("pages")),
-      logoData: JSON.parse(localStorage.getItem("logo"))
+      logoData: JSON.parse(localStorage.getItem("logo")),
+      guildData: JSON.parse(localStorage.getItem("guild"))
     });
   }
 
@@ -43,7 +45,7 @@ class Home extends Component {
           logoData={this.state.logoData}
         />
         <Banner bannerData={this.state.bannerData} />
-        <div>Sup</div>
+        <GuildTitle guildData={this.state.guildData} />
         <Footer />
       </div>
     );

@@ -10,7 +10,6 @@ import API from "../../utils/API";
 
 class Header extends Component {
   render() {
-    console.log(this.props);
     return (
       <nav className="header">
         <div className="header__container">

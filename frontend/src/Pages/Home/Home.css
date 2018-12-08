@@ -1,7 +1,7 @@
 .Home {
     min-height: 100%;
     display: grid;
-    grid-template-rows: 50px auto auto 50px;
+    grid-template-rows: 50px 250px auto 50px;
 }
 
 @media only screen and (max-width: 720px) {

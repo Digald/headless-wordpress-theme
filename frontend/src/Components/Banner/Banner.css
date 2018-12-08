@@ -1,10 +1,17 @@
 .Banner {
     display: flex;
+    align-items: center;
     justify-content: center;
-    width: 100vw;
+    height: 250px;
+    /* parallax scrolling */
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 
-.Banner__img {
-    height: 60%;
-    width: 100%;
+@media only screen and (max-width: 720px) {
+    .Banner {
+        background-size: contain;
+    }
 }
