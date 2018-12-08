@@ -45,7 +45,10 @@ class Home extends Component {
           logoData={this.state.logoData}
         />
         <Banner bannerData={this.state.bannerData} />
-        <GuildTitle guildData={this.state.guildData} />
+        <GuildTitle
+          guildData={this.state.guildData}
+          pagesData={this.state.pagesData}
+        />
         <Footer />
       </div>
     );

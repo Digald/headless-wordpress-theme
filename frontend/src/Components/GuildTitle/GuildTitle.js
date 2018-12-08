@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./GuildTitle.css";
 
 /**
@@ -7,10 +8,30 @@ import "./GuildTitle.css";
 
 class GuildTitle extends Component {
   render() {
-    console.log(this.props.guildData);
-    return <div className="GuildTitle">
-        <h1>{this.props.guildData[0].title.rendered}</h1>
-    </div>;
+    const { guildData, pagesData } = this.props;
+    console.log(this.props);
+    return (
+      <div className="GuildTitle">
+        <h1 className="GuildTitle__title">{guildData[0].title.rendered}</h1>
+        <div className="GuildTitle__divider" />
+        <ul className="GuildTitle__pages">
+          {pagesData.map(page => {
+            return (
+              <Link
+                to={`/pages/${page.title.rendered
+                  .replace(" ", "-")
+                  .toLowerCase()}/${page.id}`}
+                key={page.id}
+              >
+                <li className="GuildTitle__pages__page">
+                  {page.title.rendered}
+                </li>
+              </Link>
+            );
+          })}
+        </ul>
+      </div>
+    );
   }
 }
 

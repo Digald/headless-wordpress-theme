@@ -1,9 +1,35 @@
 .GuildTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.GuildTitle__title {
     color: #EC368D;
-    padding: 0;
-    margin: 0;
     display: flex;
     justify-content: center;
-    font-size: 30px;
-    letter-spacing: 20px;
+    font-size: 80px;
+    font-weight: bold;
+    letter-spacing: 1em;
+}
+
+.GuildTitle__divider {
+    height: 2px;
+    width: 80%;
+    background-color: #51E5FF;
+}
+
+.GuildTitle__pages {
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.GuildTitle__pages a {
+    text-decoration: none;
+    list-style: none;
+    color: #EC368D;
+    font-size: 20px;
 }
