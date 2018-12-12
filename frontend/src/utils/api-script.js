@@ -6,17 +6,16 @@ import axios from "axios";
  * @param {array} arrOfCalls Input which wordpress api call to make between: banner, logo, pages, posts, guild
  * @return ...TBD
  */
-export default function fetchWordpress(arrOfCalls) {
-  arrOfCalls.forEach(async call => {
-
+export default async function fetchWordpress(arrOfCalls) {
+  console.log("fetchWordpress called");
+  await arrOfCalls.forEach(async call => {
+    console.log(`${call} running right now`);
     // Remove undefined just in-case to reset localstorage
     if (localStorage.getItem(call) === undefined) {
       localStorage.removeItem(call);
     }
-
     // Start Logic for fetching an image
     if (call === "banner" || call === "logo") {
-
       // Make API call in background to compare to localstorage
       let results;
       if (call === "banner") {
@@ -35,14 +34,15 @@ export default function fetchWordpress(arrOfCalls) {
 
       // Check if the API data and the local storage data are the same
       if (JSON.stringify(finalData) !== localStorage.getItem(call)) {
-        localStorage.setItem(call, JSON.stringify(finalData));
+        return localStorage.setItem(call, JSON.stringify(finalData));
       }
+      return;
     } // end if statement for fetching images
 
     // Start Logic for fetching lists of information
     else if (call === "pages" || call === "posts" || call === "guild") {
       let results;
-      if (call === 'pages') {
+      if (call === "pages") {
         results = await API.getPages();
       } else if (call === "posts") {
         console.log(results);
@@ -53,8 +53,10 @@ export default function fetchWordpress(arrOfCalls) {
       // Collect data into a single variable and add to local storage
       const finalData = results.data;
       if (JSON.stringify(finalData) !== localStorage.getItem(call)) {
-        localStorage.setItem(call, JSON.stringify(finalData));
+        return localStorage.setItem(call, JSON.stringify(finalData));
       }
+      return;
     }
   });
+  return;
 } // end fetchWordpress()

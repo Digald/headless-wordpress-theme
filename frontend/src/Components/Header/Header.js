@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "./Header.css";
-import API from "../../utils/API";
 
 /**
  * Header component that will appear on all pages to serve as navigation and display logos

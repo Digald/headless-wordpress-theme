@@ -8,8 +8,8 @@ import "./GuildTitle.css";
 
 class GuildTitle extends Component {
   render() {
+    // console.log(this.props);
     const { guildData, pagesData } = this.props;
-    console.log(this.props);
     return (
       <div className="GuildTitle">
         <h1 className="GuildTitle__title">{guildData[0].title.rendered}</h1>

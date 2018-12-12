@@ -14,40 +14,51 @@ import GuildTitle from "../../Components/GuildTitle/GuildTitle";
 
 class Home extends Component {
   state = {
-    logoData: [],
-    pagesData: [],
-    guildData: [],
-    postsData: []
+    // logoData: {},
+    // pagesData: [],
+    // guildData: [],
+    // postsData: [],
+    // bannerData: {}
   };
 
   async componentDidMount() {
-    if (!localStorage.getItem("banner")) {
-      await fetchWordpress(["banner", "pages", "logo", "guild"]);
-    }
-    fetchWordpress(["banner", "pages", "logo", "guild"]);
+    const calls = ["banner", "pages", "logo", "guild"];
+    calls.forEach(call => {
+      if (localStorage.getItem(call)) {
+        this.setState({
+          ...this.state,
+          [call]: JSON.parse(localStorage.getItem(call))
+        });
+      }
+    });
+    await fetchWordpress(calls);
     this.setState({
       ...this.state,
-      bannerData: JSON.parse(localStorage.getItem("banner")),
-      pagesData: JSON.parse(localStorage.getItem("pages")),
-      logoData: JSON.parse(localStorage.getItem("logo")),
-      guildData: JSON.parse(localStorage.getItem("guild"))
+      banner: JSON.parse(localStorage.getItem("banner")),
+      pages: JSON.parse(localStorage.getItem("pages")),
+      logo: JSON.parse(localStorage.getItem("logo")),
+      guild: JSON.parse(localStorage.getItem("guild"))
     });
   }
 
   render() {
-    if (!this.state.bannerData) {
+    console.log(this.state);
+    if (!this.state.banner) {
       return <div>Loading</div>;
     }
+    console.log("components activated");
+    console.log("------------------");
+    console.log(this.state);
     return (
       <div className="Home">
         <Header
-          pagesData={this.state.pagesData}
-          logoData={this.state.logoData}
+          pagesData={this.state.pages}
+          logoData={this.state.logo}
         />
-        <Banner bannerData={this.state.bannerData} />
+        <Banner bannerData={this.state.banner} />
         <GuildTitle
-          guildData={this.state.guildData}
-          pagesData={this.state.pagesData}
+          guildData={this.state.guild}
+          pagesData={this.state.pages}
         />
         <Footer />
       </div>
