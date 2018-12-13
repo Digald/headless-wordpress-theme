@@ -13,13 +13,7 @@ import GuildTitle from "../../Components/GuildTitle/GuildTitle";
  */
 
 class Home extends Component {
-  state = {
-    // logoData: {},
-    // pagesData: [],
-    // guildData: [],
-    // postsData: [],
-    // bannerData: {}
-  };
+  state = {};
 
   async componentDidMount() {
     const calls = ["banner", "pages", "logo", "guild"];
@@ -32,34 +26,25 @@ class Home extends Component {
       }
     });
     await fetchWordpress(calls);
-    // this.setState({
-    //   ...this.state,
-    //   banner: JSON.parse(localStorage.getItem("banner")),
-    //   pages: JSON.parse(localStorage.getItem("pages")),
-    //   logo: JSON.parse(localStorage.getItem("logo")),
-    //   guild: JSON.parse(localStorage.getItem("guild"))
-    // });
+    this.setState({
+      ...this.state,
+      banner: JSON.parse(localStorage.getItem("banner")),
+      pages: JSON.parse(localStorage.getItem("pages")),
+      logo: JSON.parse(localStorage.getItem("logo")),
+      guild: JSON.parse(localStorage.getItem("guild"))
+    });
   }
 
   render() {
-    console.log(this.state);
-    if (!this.state.banner) {
+    const { banner, pages, logo, guild } = this.state;
+    if (!banner && !pages && !logo && !guild) {
       return <div>Loading</div>;
     }
-    console.log("components activated");
-    console.log("------------------");
-    console.log(this.state);
     return (
       <div className="Home">
-        <Header
-          pagesData={this.state.pages}
-          logoData={this.state.logo}
-        />
-        <Banner bannerData={this.state.banner} />
-        <GuildTitle
-          guildData={this.state.guild}
-          pagesData={this.state.pages}
-        />
+        <Header pagesData={pages} logoData={logo} />
+        <Banner bannerData={banner} />
+        <GuildTitle guildData={guild} pagesData={pages} />
         <Footer />
       </div>
     );
