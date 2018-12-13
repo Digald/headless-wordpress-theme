@@ -32,13 +32,13 @@ class Home extends Component {
       }
     });
     await fetchWordpress(calls);
-    this.setState({
-      ...this.state,
-      banner: JSON.parse(localStorage.getItem("banner")),
-      pages: JSON.parse(localStorage.getItem("pages")),
-      logo: JSON.parse(localStorage.getItem("logo")),
-      guild: JSON.parse(localStorage.getItem("guild"))
-    });
+    // this.setState({
+    //   ...this.state,
+    //   banner: JSON.parse(localStorage.getItem("banner")),
+    //   pages: JSON.parse(localStorage.getItem("pages")),
+    //   logo: JSON.parse(localStorage.getItem("logo")),
+    //   guild: JSON.parse(localStorage.getItem("guild"))
+    // });
   }
 
   render() {
