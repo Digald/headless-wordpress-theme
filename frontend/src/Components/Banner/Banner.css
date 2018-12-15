@@ -4,14 +4,11 @@
     justify-content: center;
     height: 250px;
     /* parallax scrolling */
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
     background-position: center;
-    background-size: auto;
+    /* background-size: 250px; */
     background-repeat: no-repeat;
 }
 
 @media only screen and (max-width: 720px) {
-    .Banner {
-        background-size: contain;
-    }
 }
