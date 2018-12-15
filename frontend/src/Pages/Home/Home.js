@@ -7,6 +7,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Banner from "../../Components/Banner/Banner";
 import GuildTitle from "../../Components/GuildTitle/GuildTitle";
+import FeaturedBlogs from "../../Components/FeaturedBlogs/FeaturedBlogs";
 
 /**
  * Front-Page of the application that will be rendered
@@ -16,7 +17,7 @@ class Home extends Component {
   state = {};
 
   async componentDidMount() {
-    const calls = ["banner", "pages", "logo", "guild"];
+    const calls = ["banner", "pages", "logo", "guild", "posts"];
     calls.forEach(call => {
       if (localStorage.getItem(call)) {
         this.setState({
@@ -31,12 +32,13 @@ class Home extends Component {
       banner: JSON.parse(localStorage.getItem("banner")),
       pages: JSON.parse(localStorage.getItem("pages")),
       logo: JSON.parse(localStorage.getItem("logo")),
-      guild: JSON.parse(localStorage.getItem("guild"))
+      guild: JSON.parse(localStorage.getItem("guild")),
+      posts: JSON.parse(localStorage.getItem("posts"))
     });
   }
 
   render() {
-    const { banner, pages, logo, guild } = this.state;
+    const { banner, pages, logo, guild, posts } = this.state;
     if (!banner && !pages && !logo && !guild) {
       return <div>Loading</div>;
     }
@@ -45,6 +47,7 @@ class Home extends Component {
         <Header pagesData={pages} logoData={logo} />
         <Banner bannerData={banner} />
         <GuildTitle guildData={guild} pagesData={pages} />
+        <FeaturedBlogs postsData={posts} />
         <Footer />
       </div>
     );

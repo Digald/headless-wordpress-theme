@@ -21,5 +21,10 @@ export default {
     return await axios.get(
       "http://localhost/headless-wordpress-theme/wordpress/wp-json/wp/v2/guild"
     );
+  },
+  getPosts: async () => {
+    return await axios.get(
+      "http://localhost/headless-wordpress-theme/wordpress/wp-json/wp/v2/posts"
+    );
   }
 };

@@ -45,7 +45,7 @@ async function fetchWordpress(arrOfCalls) {
           results = await API.getPages();
           break;
         case "posts":
-          console.log(results);
+          results = await API.getPosts();
           break;
         case "guild":
           results = await API.getGuild();

@@ -1,0 +1,12 @@
+.FeaturedBlogs {
+  display: flex;
+  justify-content: space-evenly;
+  color: #ec368d;
+}
+
+.FeaturedBlogs__divider {
+  margin: 0;
+  background-color: #51E5FF;
+  height: 2px;
+  width: 100%;
+}
