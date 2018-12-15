@@ -1,7 +1,6 @@
 html, body {
   height: 100%;
   width: 100%;
-  /* min-width: 100%; */
   margin: 0;
   padding: 0;
 }
@@ -10,4 +9,9 @@ body {
   /* background-image: url('backgrounds/folk-pattern-black.png'); */
   background-image: url('backgrounds/congruent_outline.png');
   /* background-image: url('backgrounds/argyle_2.png'); */
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }

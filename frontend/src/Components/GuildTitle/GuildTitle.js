@@ -8,7 +8,6 @@ import "./GuildTitle.css";
 
 class GuildTitle extends Component {
   render() {
-    // console.log(this.props);
     const { guildData, pagesData } = this.props;
     return (
       <div className="GuildTitle">
