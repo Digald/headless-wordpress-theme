@@ -1,5 +1,4 @@
 .GuildTitle {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,4 +34,10 @@
     list-style: none;
     color: #EC368D;
     font-size: 20px;
+}
+
+@media only screen and (max-width: 720px) {
+    .GuildTitle__title {
+        letter-spacing: 0;
+    }
 }
