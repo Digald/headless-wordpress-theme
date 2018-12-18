@@ -6,12 +6,22 @@ import "./FeaturedBlogs.css";
  */
 
 class FeaturedBlogs extends Component {
-    /**
-     * In a component did mount, pop off the last value of array and pass it to state, and then use that post for the start here section
-     */
+  state = {};
+  /**
+   * In a component did mount, pop off the last value of array and pass it to state, and then use that post for the start here section
+   */
+  componentWillMount() {
+    const startingPost = this.props.postsData.slice(-1);
+    this.setState({
+      ...this.state,
+      startingPost
+    });
+  }
+
   render() {
-    console.log(this.props);
     const { postsData } = this.props;
+    const {startingPost} = this.state;
+    console.log(startingPost);
     return (
       <div className="FeaturedBlogs">
         <div className="FeaturedBlogs__latest-news">
@@ -25,6 +35,8 @@ class FeaturedBlogs extends Component {
         <div className="FeaturedBlogs__">
           <h2>Start Here</h2>
           <div className="FeaturedBlogs__divider" />
+          <h3>{startingPost[0].title.rendered}</h3>
+          <p>{startingPost[0].excerpt.rendered}</p>
         </div>
       </div>
     );
