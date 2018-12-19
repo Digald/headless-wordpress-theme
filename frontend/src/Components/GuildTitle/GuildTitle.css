@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 .GuildTitle__title {
@@ -22,6 +24,7 @@
 }
 
 .GuildTitle__pages {
+    text-align: center;
     padding: 0;
     width: 100%;
     margin-top: 5%;

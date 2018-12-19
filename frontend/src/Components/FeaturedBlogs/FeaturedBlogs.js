@@ -24,7 +24,7 @@ class FeaturedBlogs extends Component {
     console.log(startingPost);
     return (
       <div className="FeaturedBlogs">
-        <div className="FeaturedBlogs__latest-news">
+        <div className="FeaturedBlogs__section">
           <h2>Latest News</h2>
           <div className="FeaturedBlogs__divider" />
           <h3>{postsData[0].title.rendered}</h3>
@@ -32,7 +32,7 @@ class FeaturedBlogs extends Component {
             {postsData[0].excerpt.rendered}
           </p>
         </div>
-        <div className="FeaturedBlogs__">
+        <div className="FeaturedBlogs__section">
           <h2>Start Here</h2>
           <div className="FeaturedBlogs__divider" />
           <h3>{startingPost[0].title.rendered}</h3>

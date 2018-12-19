@@ -1,12 +1,27 @@
 .FeaturedBlogs {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
   justify-content: space-evenly;
   color: #ec368d;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.FeaturedBlogs__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .FeaturedBlogs__divider {
   margin: 0;
-  background-color: #51E5FF;
+  background-color: #51e5ff;
   height: 2px;
-  width: 100%;
+  width: 50%;
+}
+
+.FeaturedBlogs__section p {
+  width: 50%;
 }
