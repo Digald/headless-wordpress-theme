@@ -24,6 +24,11 @@ class Home extends Component {
           ...this.state,
           [call]: JSON.parse(localStorage.getItem(call))
         });
+      } else {
+        this.setState({
+          ...this.state,
+          [call]: "Add Data on Wordpress!"
+        });
       }
     });
     await fetchWordpress(calls);

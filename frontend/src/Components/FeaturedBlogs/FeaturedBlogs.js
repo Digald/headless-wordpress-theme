@@ -29,14 +29,14 @@ class FeaturedBlogs extends Component {
           <div className="FeaturedBlogs__divider" />
           <h3>{postsData[0].title.rendered}</h3>
           <p className="FeaturedBlogs__latest-news__excerpt">
-            {postsData[0].excerpt.rendered}
+            {postsData[0].excerpt.rendered.split(" ", 20).join(" ")} ...
           </p>
         </div>
         <div className="FeaturedBlogs__section">
           <h2>Start Here</h2>
           <div className="FeaturedBlogs__divider" />
           <h3>{startingPost[0].title.rendered}</h3>
-          <p>{startingPost[0].excerpt.rendered}</p>
+          <p>{startingPost[0].excerpt.rendered.split(" ", 20).join(" ")} ...</p>
         </div>
       </div>
     );
